@@ -10,8 +10,11 @@ repositories {
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'junit:junit:4.13.1'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    implementation 'org.testng:testng:7.1.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0' // Use the latest version
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0' // Use the latest version
 }
 
 test {

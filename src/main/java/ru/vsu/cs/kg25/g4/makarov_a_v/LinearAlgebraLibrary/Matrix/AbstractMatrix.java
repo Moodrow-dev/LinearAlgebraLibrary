@@ -53,7 +53,8 @@ public abstract class AbstractMatrix<T extends AbstractMatrix<T>> implements Mat
     }
 
     // Общие реализации методов
-    protected float[][] addMatrices(float[][] otherData) {
+    protected float[][] addMatrices(float[][] otherData){
+        validateDimensions(otherData, rows, cols);
         float[][] result = new float[rows][cols];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -64,6 +65,7 @@ public abstract class AbstractMatrix<T extends AbstractMatrix<T>> implements Mat
     }
 
     protected float[][] subtractMatrices(float[][] otherData) {
+        validateDimensions(otherData, rows, cols);
         float[][] result = new float[rows][cols];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -74,6 +76,7 @@ public abstract class AbstractMatrix<T extends AbstractMatrix<T>> implements Mat
     }
 
     protected float[][] multiplyMatrices(float[][] otherData, int resultCols) {
+        validateDimensions(otherData, rows, resultCols);
         float[][] result = new float[rows][resultCols];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < resultCols; j++) {

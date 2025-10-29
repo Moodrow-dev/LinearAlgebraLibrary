@@ -1,38 +1,35 @@
 package org.example;
 
+import org.junit.jupiter.api.Test;
 import ru.vsu.cs.kg25.g4.makarov_a_v.LinearAlgebraLibrary.Vector.Vector4d;
+
+import static org.junit.Assert.assertEquals;
 
 public class Vector4dTest {
 
-    public void testVector4dOperations() {
-        System.out.println("=== Vector4d Tests ===");
+    @Test
+    public void testVector4dLength() {
+        Vector4d v = new Vector4d(1, 1, 1, 1);
+        assertEquals(2.0, v.length(), 1e-10F); // sqrt(1+1+1+1) = 2
+    }
 
+    @Test
+    public void testVector4dScalarProduct() {
         Vector4d v1 = new Vector4d(1, 2, 3, 4);
         Vector4d v2 = new Vector4d(5, 6, 7, 8);
+        float result = v1.scalarProduct(v2);
+        assertEquals(70.0, result, 1e-10F); // 1*5 + 2*6 + 3*7 + 4*8 = 70
+    }
 
-        System.out.println("Vector v1: (" + v1.getCoordinates()[0] + "," + v1.getCoordinates()[1] + "," +
-                v1.getCoordinates()[2] + "," + v1.getCoordinates()[3] + ")");
-        System.out.println("Vector v2: (" + v2.getCoordinates()[0] + "," + v2.getCoordinates()[1] + "," +
-                v2.getCoordinates()[2] + "," + v2.getCoordinates()[3] + ")");
-
-        // Сложение
-        Vector4d addResult = v1.add(v2);
-        System.out.println("Addition result: (" + addResult.getCoordinates()[0] + "," + addResult.getCoordinates()[1] + "," +
-                addResult.getCoordinates()[2] + "," + addResult.getCoordinates()[3] + ")");
-
-        // Скалярное произведение
-        float dotProduct = v1.scalarProduct(v2);
-        System.out.println("Dot product: " + dotProduct);
-        System.out.println("Calculation: " + v1.getCoordinates()[0] + "*" + v2.getCoordinates()[0] + " + " +
-                v1.getCoordinates()[1] + "*" + v2.getCoordinates()[1] + " + " +
-                v1.getCoordinates()[2] + "*" + v2.getCoordinates()[2] + " + " +
-                v1.getCoordinates()[3] + "*" + v2.getCoordinates()[3] + " = " + dotProduct);
-
-        // Длина
-        System.out.println("Length of v1: " + v1.length());
-        System.out.println("Length calculation: sqrt(" + v1.getCoordinates()[0] + "² + " + v1.getCoordinates()[1] + "² + " +
-                v1.getCoordinates()[2] + "² + " + v1.getCoordinates()[3] + "²) = " + v1.length());
-
-        System.out.println();
+    @Test
+    public void testVector4dMultipleVectors() {
+        Vector4d v1 = new Vector4d(1, 0, 0, 0);
+        Vector4d v2 = new Vector4d(0, 1, 0, 0);
+        Vector4d v3 = new Vector4d(0, 0, 1, 0);
+        Vector4d result = v1.add(v2, v3);
+        assertEquals(1.0, result.getCoordinates()[0], 1e-10F);
+        assertEquals(1.0, result.getCoordinates()[1], 1e-10F);
+        assertEquals(1.0, result.getCoordinates()[2], 1e-10F);
+        assertEquals(0.0, result.getCoordinates()[3], 1e-10F);
     }
 }

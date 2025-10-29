@@ -77,10 +77,10 @@ public class Vector3d extends AbstractVector<Vector3d> {
     }
 
     public Vector3d vectorProduct(Vector3d vector) {
-        Matrix2x2 m1 = new Matrix2x2(new float[][]{{coordinates[1], coordinates[2]}, {vector.coordinates[1], vector.coordinates[2]}});
-        Matrix2x2 m2 = new Matrix2x2(new float[][]{{coordinates[0], coordinates[2]}, {vector.coordinates[0], vector.coordinates[2]}});
-        Matrix2x2 m3 = new Matrix2x2(new float[][]{{coordinates[0], coordinates[1]}, {vector.coordinates[0], vector.coordinates[1]}});
-        return new Vector3d(m1.determinant(), m2.determinant() * -1, m3.determinant());
+        float i = coordinates[1]*vector.getZ()-coordinates[2]*vector.getY();
+        float j = coordinates[2]*vector.getX()-coordinates[0]*vector.getZ();
+        float k = coordinates[0]*vector.getY()-coordinates[1]*vector.getX();
+        return new Vector3d(i,j,k);
     }
 
     @Override

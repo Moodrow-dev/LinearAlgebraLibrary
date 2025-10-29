@@ -2,9 +2,9 @@ package ru.vsu.cs.kg25.g4.makarov_a_v.LinearAlgebraLibrary.Vector;
 
 public interface Vector<T extends Vector<T>> {
     // Базовые операции
-    T add(T... vectors) throws IllegalArgumentException;
+    T add(T... vectors);
 
-    T subtract(T... vectors) throws IllegalArgumentException;
+    T subtract(T... vectors);
 
     T multiply(float scalar);
 
@@ -15,7 +15,7 @@ public interface Vector<T extends Vector<T>> {
     // Математические операции
     float length();
 
-    float scalarProduct(T... vectors) throws IllegalArgumentException;
+    float scalarProduct(T... vectors);
 
     // Информационные методы
     float[] getCoordinates();

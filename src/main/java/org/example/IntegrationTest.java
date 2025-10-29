@@ -22,9 +22,9 @@ public class IntegrationTest {
 
         // Поворачиваем вектор на 90 градусов вокруг Z
         Vector3d rotated = rotation.multiply(v);
-        assertEquals(-2.0, rotated.getCoordinates()[0], 1e-10); // x' = -y
-        assertEquals(1.0, rotated.getCoordinates()[1], 1e-10);  // y' = x
-        assertEquals(3.0, rotated.getCoordinates()[2], 1e-10);  // z' = z
+        assertEquals(-2.0, rotated.getCoordinates()[0], 1e-10F); // x' = -y
+        assertEquals(1.0, rotated.getCoordinates()[1], 1e-10F);  // y' = x
+        assertEquals(3.0, rotated.getCoordinates()[2], 1e-10F);  // z' = z
     }
 
     @Test
@@ -37,7 +37,7 @@ public class IntegrationTest {
         Vector2d scaled = scale.multiply(v);
         Vector2d finalVector = translate.multiply(scaled);
 
-        assertEquals(7.0, finalVector.getCoordinates()[0], 1e-10); // (2*2) + (3*1)
-        assertEquals(6.0, finalVector.getCoordinates()[1], 1e-10); // (2*3)
+        assertEquals(7.0, finalVector.getCoordinates()[0], 1e-10F); // (2*2) + (3*1)
+        assertEquals(6.0, finalVector.getCoordinates()[1], 1e-10F); // (2*3)
     }
 }
